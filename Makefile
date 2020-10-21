@@ -2,6 +2,7 @@
 THEOS_DEVICE_IP = localhost
 THEOS_DEVICE_PORT = 2222
 
+# 注意 安装 theos 的路径
 THOES = /opt/theos
 
 include ${THOES}/makefiles/common.mk

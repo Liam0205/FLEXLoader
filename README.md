@@ -13,6 +13,10 @@ FLEXLoader 已经提交 Cydia 市场审核，审核通过后可以直接从 Cydi
 ### 手动安装
 
 将本项目 clone 到本地，修改 Makefile 中的设备 IP 和 PORT，然后执行 `make package install` 即可。
+其他注意
+1. thoes 本地的安装路径
+2. USB 连接越狱设备: iproxy
+3. 具体功能是先生成 dylib动态库, 再加上 plist 配置, 生成 deb 文件, 然后安装到 iOS 设备上
 
 ## 使用
 
@@ -22,7 +26,9 @@ FLEXLoader 已经提交 Cydia 市场审核，审核通过后可以直接从 Cydi
 
 ## 效果
 
-![](http://7xqonv.com1.z0.glb.clouddn.com/inspect-third-party-app-using-flexloader-pic-2-1.png)
+![](./snapshot/img1.jpg)
+![](./snapshot/img2.jpg)
+![](./snapshot/img3.jpg)
 
 ## 公众号
 
