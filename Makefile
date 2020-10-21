@@ -1,12 +1,15 @@
+# 注意先USB 连接: iproxy 2222 22
 THEOS_DEVICE_IP = localhost
 THEOS_DEVICE_PORT = 2222
 
-include $(THEOS)/makefiles/common.mk
+THOES = /opt/theos
+
+include ${THOES}/makefiles/common.mk
 
 TWEAK_NAME = FLEXLoader
 FLEXLoader_FILES = Tweak.xm
 
-include $(THEOS_MAKE_PATH)/tweak.mk
+include ${THOES}/makefiles/tweak.mk
 
 before-package::
 	@echo "Run FLEX dylib build script..."

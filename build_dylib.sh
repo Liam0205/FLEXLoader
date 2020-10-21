@@ -11,7 +11,7 @@ mkdir src/
 find FLEX/Classes -type f \( -name "*.h" -o -name "*.m" \) -exec cp {} src/ \;
 
 BIN_NAME="libFLEX.dylib"
-IOS_VERSION_MIN=7.0
+IOS_VERSION_MIN=9.0
 
 DEVELOPER_DIR="$(xcode-select -print-path)"
 #DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
