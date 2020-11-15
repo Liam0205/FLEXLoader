@@ -34,7 +34,7 @@
 %ctor {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-	NSDictionary *pref = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.swiftyper.flexloader.plist"];
+	NSDictionary *pref = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.todayios-cydia.flexloader.plist"];
 	NSString *dylibPath = @"/Library/Application Support/FLEXLoader/libFLEX.dylib";
 
 	if (![[NSFileManager defaultManager] fileExistsAtPath:dylibPath]) {

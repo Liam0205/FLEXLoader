@@ -54,4 +54,8 @@ fi
 
 cp -f bin/universal/libFLEX.dylib layout/Library/Application\ Support/FLEXLoader
 
+echo "##WARNING: resign libFLEX.dylib 注意替换自己本地的证书"
+codesign -fs "Apple Development: ljduan2013@icloud.com (992QNX5ZG6)" ./layout/Library/Application\ Support/FLEXLoader/libFLEX.dylib
+echo "===================================="
+
 echo "Done."
