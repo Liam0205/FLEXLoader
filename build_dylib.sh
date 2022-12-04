@@ -47,15 +47,15 @@ mkdir -p ${FAT_BIN_DIR}
 lipo -create bin/**/${BIN_NAME} -output ${FAT_BIN_DIR}/${BIN_NAME}
 
 echo "Copying dylib..."
-DYLIB_PATH="./layout/Library/Application Support/FLEXLoader/"
+DYLIB_PATH="./FlexPrefs/layout/Library/Application Support/FLEXLoader"
 if [ ! -d "$DYLIB_PATH" ]; then
-	mkdir -p ./layout/Library/Application\ Support/FLEXLoader/
+	mkdir -p ${DYLIB_PATH}
 fi
 
-cp -f bin/universal/libFLEX.dylib layout/Library/Application\ Support/FLEXLoader
+cp -f bin/universal/libFLEX.dylib ${DYLIB_PATH}
 
 echo "##WARNING: resign libFLEX.dylib 注意替换自己本地的证书"
-codesign -fs "Apple Development: ljduan2013@icloud.com (992QNX5ZG6)" ./layout/Library/Application\ Support/FLEXLoader/libFLEX.dylib
+codesign -fs "Apple Development: Qianduan Da (4V52F2MX45)" ${DYLIB_PATH}/libFLEX.dylib
 echo "===================================="
 
 echo "Done."
