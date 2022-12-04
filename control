@@ -1,9 +1,11 @@
-Package: com.swiftyper.flexloader
+Package: com.todayios-cydia.flexloader
 Name: FLEXLoader
-Depends: mobilesubstrate
-Version: 0.0.1
+Depends: firmware (>= 14.0), mobilesubstrate (>= 0.9.5000), com.opa334.altlist
+Version: 1.0.0
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
-Maintainer: 小锅
-Author: 小锅
+Description: flex loader
+Depiction: https://todayios-cydia.github.io/cydia/depictions/?p=com.todayios-cydia.flexloader
+Author: manajay
 Section: Tweaks
+Homepage: https://todayios-cydia.github.io/cydia/
+Maintainer: manajay <me@todayios.com>

@@ -1,37 +1,33 @@
-# FLEX iOS Jailbreak Tweak
+# FLEX Loader Tweak
 
 FLEXLoader 可以在越狱设备上动态加载 libFLEX.dylib 到任意应用中，以使用 FLEX 进行应用内调试。
 
-关于 FLEX 可以参考[它的项目主页](https://github.com/Flipboard/FLEX)。
+关于 FLEX 可以参考[它的项目主页](https://github.com/Flipboard/FLEX.git)。
 
-关于本项目更详细的内容，可以参考[我的这篇博客](http://swiftyper.com/2017/06/04/inspect-third-party-app-using-flexloader/)。
+原始插件文章 可以参考[我的这篇博客](http://swiftyper.com/2017/06/04/inspect-third-party-app-using-flexloader/)。
 
 ## 安装
 
-FLEXLoader 已经提交 Cydia 市场审核，审核通过后可以直接从 Cydia 中进行下载安装。
+FLEXLoader 已经提交 Cydia, 可查看 [todayios-cydia](https://todayios-cydia.github.io/cydia/depictions/?p=com.todayios-cydia.flexloader)
 
-### 手动安装
-
-将本项目 clone 到本地，修改 Makefile 中的设备 IP 和 PORT，然后执行 `make package install` 即可。
-其他注意
-1. thoes 本地的安装路径
-2. USB 连接越狱设备: iproxy
-3. 具体功能是先生成 dylib动态库, 再加上 plist 配置, 生成 deb 文件, 然后安装到 iOS 设备上
+## 安装
+- 配置好本地的 thoes 环境 详情查看 [theos-installation-macos](https://theos.dev/docs/installation-macos)
+  - 注意配置好环境变量 `${THEOS}` 以及 对应的 iPhone SDK 是否在 theos 的 SDK 文件夹中
+- 将本项目 clone 到本地，修改 Makefile 中的设备 IP 和 PORT，然后执行 `make package install` 即可。
+  - 如果想自动安装到手机
+  - 配置好 ssh 
+  - USB 连接越狱设备: `iproxy 2222 22`
+  - 到 `make do`
+  - 然后 生成 deb 文件, 就可以安装到 iOS 设备上
 
 ## 使用
 
-在系统设置界面中找到 FLEXLoader，选择要你想要调试的程序打开开关。
+打开设置页, 找到 FLEXLoader Manage Apps, 选择要你想要调试的程序, 打开开关。
+
+![](./snapshot/img1.png)
+![](./snapshot/img2.png)
+![](./snapshot/img3.png)
 
 启动对应的应用，就可以在应用中看到调试窗口了。
 
-## 效果
-
-![](./snapshot/img1.jpg)
-![](./snapshot/img2.jpg)
-![](./snapshot/img3.jpg)
-
-## 公众号
-
-如果你对本项目有兴趣，可以关注我的公众号。
-
-![](http://7xqonv.com1.z0.glb.clouddn.com/offical_wechat_account_qrcode.jpg)
+![](./snapshot/img4.jpg)

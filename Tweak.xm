@@ -32,30 +32,32 @@
 @end
 
 %ctor {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-	NSDictionary *pref = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.swiftyper.flexloader.plist"];
-	NSString *dylibPath = @"/Library/Application Support/FLEXLoader/libFLEX.dylib";
-
-	if (![[NSFileManager defaultManager] fileExistsAtPath:dylibPath]) {
-		NSLog(@"FLEXLoader dylib file not found: %@", dylibPath);
-		return;
-	} 
-
-	NSString *keyPath = [NSString stringWithFormat:@"FLEXLoaderEnabled-%@", [[NSBundle mainBundle] bundleIdentifier]];
-	if ([[pref objectForKey:keyPath] boolValue]) {
-		void *handle = dlopen([dylibPath UTF8String], RTLD_NOW);
-		if (handle == NULL) {
-			char *error = dlerror();
-			NSLog(@"Load FLEXLoader dylib fail: %s", error);
+	@autoreleasepool {
+		NSString *dylibPath = @"/Library/Application Support/FLEXLoader/libFLEX.dylib";
+		if (![[NSFileManager defaultManager] fileExistsAtPath:dylibPath]) {
+			HBLogDebug(@"FLEXLoader dylib file not found: %@", dylibPath);
 			return;
-		} 
+		}
 
-		[[NSNotificationCenter defaultCenter] addObserver:[FLEXLoader sharedInstance]
-										   selector:@selector(show)
-											   name:UIApplicationDidBecomeActiveNotification
-											 object:nil];
-	}	
+		NSDictionary *pref = [NSDictionary dictionaryWithContentsOfFile:@"/User/Library/Preferences/com.todayios-cydia.flexloader.plist"];
+		NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+		NSArray *selectedApplications = [pref objectForKey:@"selectedApplications"];
 
-	[pool drain];
+		BOOL enabled = [selectedApplications containsObject:bundleIdentifier];
+		HBLogDebug(@"FLEXLoader selectedApplications:%@ contains %@", selectedApplications, bundleIdentifier);
+
+		if (enabled) {
+			void *handle = dlopen([dylibPath UTF8String], RTLD_NOW);
+			if (handle == NULL) {
+				char *error = dlerror();
+				HBLogDebug(@"Load FLEXLoader dylib fail: %s", error);
+				return;
+			} 
+
+			[[NSNotificationCenter defaultCenter] addObserver:[FLEXLoader sharedInstance]
+											selector:@selector(show)
+												name:UIApplicationDidBecomeActiveNotification
+												object:nil];
+		}
+	}
 }
